@@ -50,7 +50,9 @@ export default function Navber() {
                    {navMenu()}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end space-x-4">
+                <Link href='/auth/register'>Register</Link>
+                <Link href='/auth/login'>Login</Link>
                 <button className="btn text-[#FF3811] rounded-sm btn-outline border-1 border-[#FF3811]">Appointment</button>
             </div>
         </div>

@@ -1,10 +1,13 @@
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
+export const collectionName = {
+  SERVICES : "cars"
+}
 
 export default function connetDB(collectionName){
 
-const uri = `mongodb+srv://practice-next-js:DvRpvJ7AptcvMJZs@cluster0.dclhmji.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const uri = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0.dclhmji.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
 const client = new MongoClient(uri, {
   serverApi: {
