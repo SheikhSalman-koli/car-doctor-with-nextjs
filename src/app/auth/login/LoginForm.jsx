@@ -13,7 +13,7 @@ export default function LoginForm() {
                 <label className="block text-gray-700 mb-1">Email</label>
                 <input
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder="Enter your email"
                   className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
