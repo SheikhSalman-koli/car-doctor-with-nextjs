@@ -2,7 +2,7 @@
 import { saveUser } from '@/app/action/auth/saveUser';
 import Link from 'next/link';
 import React from 'react'
-import { FaFacebook, FaGoogle, FaLinkedin } from 'react-icons/fa6';
+import SocialLogin from '../components/SocialLogin';
 
 export default function RegisterForm() {
 
@@ -11,8 +11,8 @@ export default function RegisterForm() {
     const form = e.target
     const name = form?.name.value
     const email = form?.email.value
-    const pass = form?.pass.value
-    const payload = { name, email, pass }
+    const password = form?.password.value
+    const payload = { name, email, password }
     const res = await saveUser(payload)
     if(res.insertedId){
       alert('registration successfully!')
@@ -56,7 +56,7 @@ export default function RegisterForm() {
       <div>
         <label className="block text-gray-700 mb-1">Password</label>
         <input
-          name='pass'
+          name='password'
           type="password"
           placeholder="••••••••"
           className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -75,11 +75,7 @@ export default function RegisterForm() {
       {/* Social Login */}
       <div className="text-center">
         <p className="text-gray-500 mb-2">or sign up with</p>
-        <div className="flex justify-center space-x-4 text-xl text-gray-600">
-          <FaGoogle className="hover:text-red-500 cursor-pointer" />
-          <FaLinkedin className="hover:text-blue-700 cursor-pointer" />
-          <FaFacebook className="hover:text-blue-600 cursor-pointer" />
-        </div>
+        <SocialLogin></SocialLogin>
         <p className='mt-6'>Already Have An Account ? <Link href='/auth/login'><span className='text-[#FF3811]'>Login</span></Link></p>
       </div>
     </form>

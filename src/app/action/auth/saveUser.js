@@ -5,21 +5,23 @@ import bcrypt from 'bcrypt'
 export const saveUser =async(payload)=> {
     const database = connetDB(collectionName.USERS)
 
-    const {email, pass} = payload
-    if(!email || !pass){
+    const {email, password} = payload
+    if(!email || !password){
         return {success: false}
     }
 
     const user = await database.findOne({email: payload?.email})
 
     if(!user){
-        const hashPassword = await bcrypt.hash(pass, 10)
-        payload.pass = hashPassword
+        const hashPassword = await bcrypt.hash(password, 10)
+        payload.password = hashPassword
         const result = await database.insertOne(payload)
-          return {
-            acknowledged: result.acknowledged,
-            insertedId: result.insertedId.toString()
-        }
+        //   return {
+        //     acknowledged: result.acknowledged,
+        //     insertedId: result.insertedId.toString()
+        // }
+        result.insertedId = result.insertedId.toString()
+        return result
     }else{
         return {message: "user already exist"}
     }

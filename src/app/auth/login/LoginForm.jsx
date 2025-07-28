@@ -1,17 +1,47 @@
 "use client"
 import Link from 'next/link';
 import React from 'react'
-import { FaFacebook, FaGoogle, FaLinkedin } from 'react-icons/fa6';
+import { signIn } from "next-auth/react"
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+import SocialLogin from '../components/SocialLogin';
 
 export default function LoginForm() {
+
+  const router = useRouter()
+
+   const handleLogin =async(e)=> {
+     e.preventDefault()
+     toast("submiting...")
+    const form = e.target
+    const email = form.email.value
+    const password = form.password.value
+    try{
+      const response =await signIn( 'credentials',{email, password, callbackUrl: '/', redirect: false} )
+      if(response.ok){
+        router.push('/')
+        toast.success("logged in successfully!")
+        form.reset()
+      }else{
+        toast.error("authentication failed")
+      }
+    }catch(error){
+      toast.error("authentication failed")
+    }
+
+   }
+
   return (
-      <form className="w-full max-w-md space-y-6">
+      <form
+      onSubmit={handleLogin}
+      className="w-full max-w-md space-y-6">
               <h2 className="text-3xl font-bold text-center">Sign In</h2>
     
               {/* Email */}
               <div>
                 <label className="block text-gray-700 mb-1">Email</label>
                 <input
+                name='email'
                   type="email"
                   placeholder="Enter your email"
                   className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -22,6 +52,7 @@ export default function LoginForm() {
               <div>
                 <label className="block text-gray-700 mb-1">Password</label>
                 <input
+                name='password'
                   type="password"
                   placeholder="••••••••"
                   className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -40,11 +71,7 @@ export default function LoginForm() {
               {/* Social Login */}
               <div className="text-center">
                 <p className="text-gray-500 mb-2">or sign up with</p>
-                <div className="flex justify-center space-x-4 text-xl text-gray-600">
-                  <FaGoogle className="hover:text-red-500 cursor-pointer" />
-                  <FaLinkedin className="hover:text-blue-700 cursor-pointer" />
-                  <FaFacebook className="hover:text-blue-600 cursor-pointer" />
-                </div>
+                <SocialLogin></SocialLogin>
                  <p className='mt-6'>New In This Site ? <Link href='/auth/register'><span className='text-[#FF3811]'>Register</span></Link></p>
               </div>
             </form>

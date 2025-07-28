@@ -1,9 +1,14 @@
+"use client"
 import React from 'react'
 import logo from '../../../public/assets/logo.svg'
 import Link from 'next/link'
 import Image from 'next/image'
+import { signOut, useSession } from 'next-auth/react'
 
 export default function Navber() {
+
+    const {data:session, status} = useSession()
+   
     // const links = <>
     //   <li><Link href='/'>Home</Link></li>
     //   <li><Link href='/'>About</Link></li>
@@ -51,8 +56,25 @@ export default function Navber() {
                 </ul>
             </div>
             <div className="navbar-end space-x-4">
+                {status == "authenticated" ? 
+                <>
+                    <Image
+                    src={session?.user?.image}
+                    width={30}
+                    height={30}
+                    className='rounded-full'
+                    alt='user-photo'
+                    />
+                   <button
+                   className='btn btn-outline rounded-sm'
+                   onClick={()=> signOut()}
+                   >Log Out</button> 
+                </> 
+                : 
+                <>
                 <Link href='/auth/register'>Register</Link>
                 <Link href='/auth/login'>Login</Link>
+                </>}
                 <button className="btn text-[#FF3811] rounded-sm btn-outline border-1 border-[#FF3811]">Appointment</button>
             </div>
         </div>
