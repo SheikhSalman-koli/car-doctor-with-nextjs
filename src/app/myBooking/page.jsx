@@ -17,7 +17,7 @@ export default function MyBookingPage() {
 
 
   return (
-    <div>
+    <div className='p-8'>
         <BookingTable bookings={data}/>
     </div>
   )
