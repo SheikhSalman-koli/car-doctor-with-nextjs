@@ -23,7 +23,7 @@ export default function Navber() {
             <li><Link href='/'>About</Link></li>
             <li><Link href='/'>Services</Link></li>
             <li><Link href='/'>Blog</Link></li>
-            <li><Link href='/'>Contact</Link></li>
+            <li><Link href='/myBooking'>MY-Booking</Link></li>
         </>)
     }
 

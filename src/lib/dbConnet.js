@@ -3,7 +3,8 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 
 export const collectionName = {
   SERVICES : "cars",
-  USERS : "users"
+  USERS : "users",
+  BOOKING: "bookings"
 }
 
 export default function connetDB(collectionName){

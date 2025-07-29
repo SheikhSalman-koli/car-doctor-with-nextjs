@@ -1,8 +1,8 @@
-import connetDB, { collectionName } from '@/lib/dbConnet'
-import { ObjectId } from 'mongodb'
+
 import Image from 'next/image'
 import React from 'react'
 import banner from '../../../../public/assets/images/checkout/checkout.png'
+import Link from 'next/link'
 
 export default async function DetailsPage({ params }) {
 
@@ -40,9 +40,11 @@ export default async function DetailsPage({ params }) {
                 </div>
 
                 <div className='col-span-4'>
+                    <Link href={`/checkout/${data?._id}`}>
                     <button
                         className='bg-[#FF3811] text-white w-full btn'
                     >Checkout</button>
+                    </Link>
                     <p className='font-bold text-2xl text-center'>Price ${data?.price}</p>
                 </div>
             </div>
