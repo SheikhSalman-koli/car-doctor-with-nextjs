@@ -1,11 +1,11 @@
-"use client"
+// "use client"
 import Image from 'next/image';
 import React from 'react'
 import { FaEdit } from "react-icons/fa";
 import BookingDeleteButton from '../myBooking/components/BookingDeleteButton';
 
 export default function BookingTable({bookings}) {
-    console.log(bookings);
+    // console.log(bookings);
     return (
         <div>
              <h2 className="text-2xl font-bold text-gray-800 text-center"> My Bookings
@@ -61,11 +61,3 @@ export default function BookingTable({bookings}) {
     )
 }
 
-// Replace with your own handler logic
-// const handleEdit = (id) => {
-//   console.log("Edit booking:", id);
-// };
-
-// const handleDelete = (id) => {
-//   console.log("Delete booking:", id);
-// };
