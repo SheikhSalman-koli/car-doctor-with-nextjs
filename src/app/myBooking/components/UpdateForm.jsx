@@ -22,7 +22,7 @@ export default function UpdateForm({data}) {
 
         }
 
-        const res =await fetch(`http://localhost:3000/api/my-booking/${data?._id}`, {
+        const res =await fetch(`https://car-doctor-with-nextjs-teal.vercel.app/api/my-booking/${data?._id}`, {
             method: "PATCH",
             body: JSON.stringify(payload)
         })

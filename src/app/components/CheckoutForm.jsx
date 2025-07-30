@@ -30,7 +30,7 @@ export default function CheckoutForm({ data }) {
             service_img : data?.img
         }
 
-        const res =await fetch(`http://localhost:3000/api/service`, {
+        const res =await fetch(`https://car-doctor-with-nextjs-teal.vercel.app/api/service`, {
             method: "POST",
             body: JSON.stringify(payload)
         })

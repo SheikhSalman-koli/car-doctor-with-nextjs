@@ -6,8 +6,8 @@ export default async function UpdatePage({params}) {
 
     const id =await params?.id
 
-    const res =await fetch(`http://localhost:3000/api/my-booking/${id}`,{
-        headers: await headers()
+    const res =await fetch(`https://car-doctor-with-nextjs-teal.vercel.app/api/my-booking/${id}`,{
+        headers: new Headers(await headers())
     })
     const data = await res.json()
 

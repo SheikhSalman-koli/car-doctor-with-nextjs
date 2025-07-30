@@ -8,7 +8,7 @@ export default function BookingDeleteButton({ id }) {
     const router = useRouter()
 
     const handleDelete = async (id) => {
-        const res = await fetch(`http://localhost:3000/api/service/${id}`, {
+        const res = await fetch(`https://car-doctor-with-nextjs-teal.vercel.app/api/service/${id}`, {
             method: "DELETE",
         })
         const result = await res.json()
