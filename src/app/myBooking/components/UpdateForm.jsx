@@ -28,7 +28,7 @@ export default function UpdateForm({data}) {
         })
         const updatedData =await res.json()
         if(updatedData?.modifiedCount){
-            toast.success("your order is confirmed!")
+            toast.success("your order is Updated!")
         }
         router.push("/myBooking")
         // console.log(updatedData);
