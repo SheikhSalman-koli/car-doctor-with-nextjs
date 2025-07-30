@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react'
 import { FaEdit } from "react-icons/fa";
 import BookingDeleteButton from '../myBooking/components/BookingDeleteButton';
+import Link from 'next/link';
 
 export default function BookingTable({bookings}) {
     // console.log(bookings);
@@ -19,6 +20,8 @@ export default function BookingTable({bookings}) {
                             <th className="px-4 py-3">Service</th>
                             <th className="px-4 py-3">Date</th>
                             <th className="px-4 py-3">Price</th>
+                            <th className="px-4 py-3">Phone</th>
+                            <th className="px-4 py-3">Address</th>
                             <th className="px-4 py-3 ">Edit</th>
                             <th className="px-4 py-3 ">delete</th>
                         </tr>
@@ -44,9 +47,12 @@ export default function BookingTable({bookings}) {
                                 <td className="px-4 py-3">{booking?.service_Name}</td>
                                 <td className="px-4 py-3">{booking?.date}</td>
                                 <td className="px-4 py-3">${booking?.service_Price}</td>
+                                 <td className="px-4 py-3">{booking?.phone}</td>
+                                  <td className="px-4 py-3">{booking?.address}</td>
                                 <td className="px-4 py-3">
-
-                                        <FaEdit />
+                                    <Link href={`/myBooking/${booking._id}`}>
+                                    <FaEdit />
+                                    </Link>
                                 </td>
                                    <td className="px-4 py-3">
                                     
